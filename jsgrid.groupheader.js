@@ -42,7 +42,7 @@
                         _this._loadStrategy.sort();
                     }, this));
             }
-            var $thead = $('<thead>');
+            var $thead = $('<thead>').append(_this._createHeaderWidthRow());
             var $result = $("<tr>").addClass(this.headerRowClass);
             this._eachField(function(field, index) {
                 var $th = this._prepareCell("<th>", field, "headercss", this.headerCellClass)
@@ -93,7 +93,6 @@
                 $filterRow = this._filterRow = this._createFilterRow(),
                 $insertRow = this._insertRow = this._createInsertRow();
             var $headerGrid = this._headerGrid = $("<table>").addClass(this.tableClass)
-                .append(this._createHeaderWidthRow())
                 .append($headerRow)
                 .append($filterRow)
                 .append($insertRow);
