@@ -42,7 +42,7 @@
                         _this._loadStrategy.sort();
                     }, this));
             }
-
+            var $thead = $('<thead>');
             var $result = $("<tr>").addClass(this.headerRowClass);
             this._eachField(function(field, index) {
                 var $th = this._prepareCell("<th>", field, "headercss", this.headerCellClass)
@@ -71,6 +71,7 @@
                 }
                 $result.append($th);
             });
+            $thead.append($result)
             if (this._group.length > 0) {
                 var $group = $("<tr>").addClass(this.headerRowClass);
                 $.each(this._group, function(index, groupHeader) {
@@ -83,9 +84,9 @@
                         $group.append($th);
                     });
                 });
-                $result.after($group);
+                $thead.append($group);
             }
-            return $result;
+            return $thead;
         },
         _createHeader: function() {
             var $headerRow = this._headerRow = this._createHeaderRow(),
