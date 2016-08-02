@@ -15,8 +15,8 @@
             if ($.isFunction(this.headerRowRenderer))
                 return $(this.renderTemplate(this.headerRowRenderer, this));
             this.groupHeaders = this.groupHeaders || [];
+            this._group = [];
             if (this.groupHeaders.length > 0) {
-                var groups = [];
                 $.each(this.groupHeaders, function(index, groupHeader) {
                     var group = {};
                     group.name = groupHeader.name;
@@ -28,9 +28,8 @@
                         group.width += item.width;
                         group.items.push(item);
                     }
-                    groups.push(group);
+                    _this._group.push(group);
                 });
-                this._group = groups;
             }
 
             function addFieldSorting($th, field) {
